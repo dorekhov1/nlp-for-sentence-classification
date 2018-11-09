@@ -10,14 +10,20 @@ class Baseline(nn.Module):
         ######
 
         # 4.1 YOUR CODE HERE
+        self.emb = nn.Embedding.from_pretrained(vocab)
 
         ######
 
     def forward(self, x, lengths=None):
-        pass
+
         ######
 
         # 4.1 YOUR CODE HERE
+
+        x = self.emb(x)
+        x = torch.mean(x)
+
+        return x
 
         ######
 

@@ -25,9 +25,9 @@ def main(args):
     LABEL = data.Field(sequential=False, use_vocab=False)
 
     train, val, test = data.TabularDataset.splits(
-        path='./data/',
+        path='data/',
         train='train.tsv',
-        validation='val.tsv',
+        validation='validation.tsv',
         test='test.tsv',
         format='tsv',
         skip_header=True,
@@ -44,15 +44,13 @@ def main(args):
 
     TEXT.build_vocab(train)
     vocab = TEXT.vocab
-    vocab.build_vocab(train, vectors="glove.6B.100d")
+    vocab.load_vectors(vectors="glove.6B.100d")
 
     ######
 
     ######
 
     # 5 Training and Evaluation
-
-
 
     ######
 
